@@ -1,1 +1,1 @@
-![Diagrama](singleton-factory-diagram.jpg)
+![Diagrama](diagram.jpeg)
