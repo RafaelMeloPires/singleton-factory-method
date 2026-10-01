@@ -2,12 +2,13 @@ package org.examples;
 
 public class FabricaPF implements IFabricaAbstrata {
 
-    private static FabricaPF instancia = new FabricaPF();
+    private static FabricaPF instance = new FabricaPF();
 
-    private FabricaPF() {}
+    private FabricaPF() {
+    }
 
     public static FabricaPF getInstance() {
-        return instancia;
+        return instance;
     }
 
     @Override

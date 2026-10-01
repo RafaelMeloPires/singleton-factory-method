@@ -1,13 +1,15 @@
 package org.examples;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ProcuracaoPFTest {
+class ProcuracaoPFTest {
 
     @Test
-    void deveEmitirProcuracaoPF() {
+    void deveRetornarNomeProcuracaoPF() {
         IProcuracao procuracao = new ProcuracaoPF();
-        assertEquals("Procuracao de PF emitida", procuracao.emitir());
+
+        assertEquals("Procuração Pessoa Física", procuracao.NOME());
     }
 }

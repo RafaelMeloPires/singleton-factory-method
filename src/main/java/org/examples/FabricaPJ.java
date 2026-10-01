@@ -1,13 +1,14 @@
 package org.examples;
 
-public class FabricaPJ implements IFabricaAbstrata{
+public class FabricaPJ implements IFabricaAbstrata {
 
-    private static FabricaPJ instancia = new FabricaPJ();
+    private static FabricaPJ instance = new FabricaPJ();
 
-    private FabricaPJ() {}
+    private FabricaPJ() {
+    }
 
     public static FabricaPJ getInstance() {
-        return instancia;
+        return instance;
     }
 
     @Override

@@ -5,16 +5,17 @@ public class Cliente {
     private IContrato contrato;
     private IProcuracao procuracao;
 
-    public Cliente(IFabricaAbstrata fabrica) {
+    public Cliente(String tipo) {
+        IFabricaAbstrata fabrica = FactoryMethod.getInstance().obterFabrica(tipo);
         this.contrato = fabrica.criarContrato();
         this.procuracao = fabrica.criarProcuracao();
     }
 
-    public String obterContrato() {
-        return this.contrato.emitir();
+    public IContrato getContrato() {
+        return contrato;
     }
 
-    public String cancelarContrato() {
-        return "Contrato cancelado";
+    public IProcuracao getProcuracao() {
+        return procuracao;
     }
 }

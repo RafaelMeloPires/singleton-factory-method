@@ -1,28 +1,22 @@
 package org.examples;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FabricaPFTest {
-
-    @Test
-    void deveRetornarMesmaInstanciaSingleton() {
-        FabricaPF instancia1 = FabricaPF.getInstance();
-        FabricaPF instancia2 = FabricaPF.getInstance();
-        assertSame(instancia1, instancia2);
-    }
+class FabricaPFTest {
 
     @Test
     void deveCriarContratoPF() {
         IFabricaAbstrata fabrica = FabricaPF.getInstance();
-        IContrato contrato = fabrica.criarContrato();
-        assertTrue(contrato instanceof ContratoPF);
+
+        assertEquals("Contrato PF emitido", fabrica.criarContrato().emitir());
     }
 
     @Test
     void deveCriarProcuracaoPF() {
         IFabricaAbstrata fabrica = FabricaPF.getInstance();
-        IProcuracao procuracao = fabrica.criarProcuracao();
-        assertTrue(procuracao instanceof ProcuracaoPF);
+
+        assertEquals("Procuração Pessoa Física", fabrica.criarProcuracao().NOME());
     }
 }

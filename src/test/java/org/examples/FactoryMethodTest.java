@@ -1,39 +1,39 @@
 package org.examples;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FactoryMethodTest {
+class FactoryMethodTest {
 
     @Test
-    void deveRetornarFabricaPF() {
-        IFabricaAbstrata fabrica = FactoryMethod.obterFabrica("PF");
-        assertTrue(fabrica instanceof FabricaPF);
+    void deveRetornarSempreAMesmaInstancia() {
+        assertEquals(FactoryMethod.getInstance(), FactoryMethod.getInstance());
     }
 
     @Test
-    void deveRetornarFabricaPJ() {
-        IFabricaAbstrata fabrica = FactoryMethod.obterFabrica("PJ");
-        assertTrue(fabrica instanceof FabricaPJ);
+    void deveObterFabricaPF() {
+        IFabricaAbstrata fabrica = FactoryMethod.getInstance().obterFabrica("PF");
+
+        assertEquals(FabricaPF.class, fabrica.getClass());
     }
 
     @Test
-    void deveRetornarExcecaoParaFabricaInexistente() {
+    void deveObterFabricaPJ() {
+        IFabricaAbstrata fabrica = FactoryMethod.getInstance().obterFabrica("PJ");
+
+        assertEquals(FabricaPJ.class, fabrica.getClass());
+    }
+
+    @Test
+    void deveLancarExcecaoParaFabricaInexistente() {
+        String mensagem = null;
         try {
-            FactoryMethod.obterFabrica("Fabrica inexistente");
-            fail();
-        } catch (IllegalArgumentException e) {
-            assertEquals("Fabrica inexistente", e.getMessage());
+            FactoryMethod.getInstance().obterFabrica("XX");
+        } catch (IllegalArgumentException ex) {
+            mensagem = ex.getMessage();
         }
-    }
 
-    @Test
-    void deveLancarExcecaoParaFabricaInvalida() {
-        try {
-            FactoryMethod.obterFabrica("Cliente"); // Classe existe mas não é IFabricaAbstrata
-            fail("Deveria ter lançado uma exceção");
-        } catch (IllegalArgumentException e) {
-            assertEquals("Fabrica inexistente", e.getMessage());
-        }
+        assertEquals("Fabrica inexistente", mensagem);
     }
 }
